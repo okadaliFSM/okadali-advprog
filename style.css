@@ -1,0 +1,38 @@
+.content {
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    position: absolute;
+    margin: auto;
+    width: 600px;
+    height: 800px;
+    background-color: #88BE46;
+    border-radius: 10px;
+
+}
+
+.wrapper {
+    width: 100px;
+    height: 100px;
+    margin: 20px;
+    width: auto;
+    height: 760px;
+}
+
+h1 {
+    color: #C83299;
+    font-weight: bold;
+    font-size: 48px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+h3,a {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 1.5em;
+    text-decoration: none;
+}
+
+a:visited,a:link {
+    color: #C83299;
+}
