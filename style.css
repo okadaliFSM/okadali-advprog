@@ -1,3 +1,5 @@
+
+
 .content {
     top: 0px;
     left: 0px;
@@ -5,19 +7,17 @@
     bottom: 0px;
     position: absolute;
     margin: auto;
-    width: 600px;
-    height: 800px;
+    width: fit-content;
+    height: fit-content;
     background-color: #88BE46;
     border-radius: 10px;
 
 }
 
 .wrapper {
-    width: 100px;
-    height: 100px;
     margin: 20px;
     width: auto;
-    height: 760px;
+    height: fit-content;
 }
 
 h1 {
