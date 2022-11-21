@@ -14,6 +14,10 @@
 
 }
 
+canvas {
+    display: block;
+}
+
 .profilePicture {
     width: 75px;
     height: 75px;
@@ -44,4 +48,7 @@ h3,a {
 
 a:visited,a:link {
     color: #C83299;
+}
+a:hover {
+    text-decoration: underline;
 }

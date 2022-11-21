@@ -1,0 +1,134 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <title>HW03</title>
+    </head>
+    <body>
+        
+        <canvas id="canvas"></canvas>
+        <button onclick="startOnClick()">Start</button>
+        <button onclick="pauseOnClick()">Pause</button>
+        <button onclick="stopOnClick()">Stop</button>
+        <button onclick="nextOnClick()">Next</button>
+        <button onclick="prevOnClick()">Prev</button>
+    </body>
+
+    <script>
+        let i = 0
+        let y = 0
+        let isPaused = false;
+        let isStopped = false;
+
+        let images = [];
+
+        const canWidth = 600;
+        const canHeight = 140;
+
+        let canvas = document.getElementById("canvas");
+        canvas.height = canHeight;
+        canvas.width = canWidth;
+        let ctx = canvas.getContext('2d');
+
+        function startOnClick() {
+            isStopped = false;
+            isPaused = false;
+            i = -108;
+            y = 0;
+        }
+
+        function pauseOnClick() {
+            isPaused = !isPaused
+        }
+
+        function stopOnClick() {
+            isStopped = true;
+        }
+        
+        function nextOnClick() {
+            if(isStopped || isPaused) {
+                y++;
+                if(y == 8) {
+                    y = 0;
+                }
+                ctx.clearRect(0,0,canWidth,140)
+                ctx.drawImage(images[y],i,0)
+            }
+        }
+
+        function prevOnClick() {
+            if(isStopped || isPaused) {
+                y--;
+                if(y == -1) {
+                    y = 7;
+                }
+                ctx.clearRect(0,0,canWidth,140)
+                ctx.drawImage(images[y],i,0)
+            }
+        }
+        
+
+        
+
+        getPNGS();
+        
+        async function getPNGS() {
+            
+            for (let i = 1; i < 9; i++) {
+                let url = `https://okadalifsm.github.io/okadali-advprog/sprite/${i}.png`;
+                let response = await fetch(url);
+
+                if (response.status === 200) {
+                    let imageBlob = await response.blob();
+                    let imageObjectURL = URL.createObjectURL(imageBlob);
+                    let image = document.createElement("img");
+                    image.src = imageObjectURL;
+                    images.push(image);
+                }
+            }
+            main(images);
+        }
+
+        function main(images) {
+            
+            
+
+            function getY() {
+                if(y != 7) {
+                    return y++
+                }
+                else {
+                    return y = 0
+                }
+                
+            }
+
+            setInterval(() => {
+                if(!isStopped) {
+                    if(!isPaused ) {
+                        ctx.clearRect(0,0,canWidth,140)
+                        ctx.drawImage(images[getY()],i,0)
+                    }
+                }   
+            },100)
+
+            setInterval(() => {
+                if(!isStopped) {
+                    if(!isPaused) {
+                        i = i + 20;
+                        if(i > canWidth) {
+                            i = -108;
+                        }   
+                    }  
+                }           
+            },100)
+        }
+
+
+        
+        
+        
+    </script>
+</html>
