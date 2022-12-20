@@ -1,0 +1,79 @@
+* {
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+}
+
+body {
+  background-color: rgb(40, 40, 40);
+}
+
+
+.board {
+  display: flex;
+  flex-wrap: wrap;
+  height: 400px;
+  width: 400px;
+  margin-bottom: 20px;
+}
+
+.shipContainer {
+  display: flex;
+  flex-direction: row;
+}
+.shipContainer.horizontal {
+  flex-direction: column !important; 
+}
+.ship {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  height: fit-content;
+  margin-right: 5px;
+}
+.horizontal .ship {
+  flex-direction: row ;
+  margin-bottom: 5px; 
+}
+
+.ship:hover .shipPart {
+  background-color: darkslategray;
+}
+
+.shipPart {
+  width: 40px;
+  height: 40px;
+  background-color: gray;
+}
+.shipPart.top {
+  border-radius: 10px 10px 0px 0px;
+}
+.horizontal .shipPart.top {
+  border-radius: 10px 0px 0px 10px;
+}
+
+.shipPart.bottom {
+  border-radius: 0px 0px 10px 10px;
+}
+.horizontal .shipPart.bottom {
+  border-radius: 0px 10px 10px 0px;
+}
+
+
+.boardIdentifier {
+  position: absolute;
+  user-select: none;
+  font-size: 32px;
+  color: lightblue;
+  font-family:  'Courier New', Courier, monospace;
+  pointer-events: none
+}
+
+.reverseButton {
+  width: 100px;
+  height: 20px;
+}
+
+.displayNone {
+  display: none !important;
+}
