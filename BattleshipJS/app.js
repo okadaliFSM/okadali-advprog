@@ -73,6 +73,7 @@ class seaBox {
         }
     }
 }
+
 class computerBox {
     constructor(div,x,y) {
         this.div = div
@@ -107,8 +108,6 @@ class computerBox {
         }
     }
 }
-
-
 
 
 //Creating The Players Board----------------------------------------
@@ -178,9 +177,6 @@ for(let i = 0 ; i < shipSizes.length ; i++) {
             }
         }
     }
-    
-
-
 }
 
 //Successful Hit----------------------------------------------------
@@ -189,14 +185,31 @@ function successfulHit(ix) {
     //ix = 0 computer sucessful hit
     if(ix) {
         if(--computerHitPoint === 0) {
+            let pbText = document.getElementById("pbText");
+            let cbText = document.getElementById("cbText");
+            pbText.innerText = "You Won"
+            pbText.style.color = "red"
+            cbText.innerText = "You Won"
+            cbText.style.color = "red"
             alert("You Won The Game!")
+            isGameStarted = false;
         }
     }
     else {
         if(--playerHitPoint === 0) {
-            alert("You Lost The Game...")   
+            let pbText = document.getElementById("pbText");
+            let cbText = document.getElementById("cbText");
+            pbText.innerText = "You Lost"
+            pbText.style.color = "red"
+            cbText.innerText = "You Lost"
+            cbText.style.color = "red"   
+            alert("You Lost The Game...")
+            isGameStarted = false;
         }
-        computerHit();
+        else {
+            computerHit();
+        }
+        
     }
 }
 
@@ -238,23 +251,25 @@ function computerHit() {
         dot.style.height = board.clientHeight / 40 + "px"
         dot.style.borderRadius = "10px"
         dot.style.position = "relative"
-        dot.style.top = "35%"
         dot.style.left = "35%"
+        dot.style.top = "35%"
 
         playerBoard[x][y].isHitted = true;
         if(playerBoard[x][y].div.children.length !== 0) {
             successfulHit(0);
-            dot.style.backgroundColor = "red";        }
+            dot.style.backgroundColor = "red";
+            playerBoard[x][y].div.children[0].append(dot)
+        }
         else {
             dot.style.backgroundColor = "white";
+            playerBoard[x][y].div.append(dot)
             turn = 1;
         }
-        playerBoard[x][y].div.append(dot)
+        
         
     }
     
 }
-
 
 //Check Placement If Placement Finished And Starts The Game---------
 function isPlacementFinished() {

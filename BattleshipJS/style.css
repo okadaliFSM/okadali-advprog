@@ -12,14 +12,16 @@ body {
 .board {
   display: flex;
   flex-wrap: wrap;
-  height: 400px;
-  width: 400px;
-  margin-bottom: 20px;
+  height: 300px;
+  width: 300px;
+  margin-bottom: 10px;
 }
+
 
 .shipContainer {
   display: flex;
   flex-direction: row;
+  margin-left: 65px;
 }
 .shipContainer.horizontal {
   flex-direction: column !important; 
@@ -41,8 +43,8 @@ body {
 }
 
 .shipPart {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   background-color: gray;
 }
 .shipPart.top {
@@ -63,7 +65,7 @@ body {
 .boardIdentifier {
   position: absolute;
   user-select: none;
-  font-size: 32px;
+  font-size: 26px;
   color: lightblue;
   font-family:  'Courier New', Courier, monospace;
   pointer-events: none
@@ -71,7 +73,10 @@ body {
 
 .reverseButton {
   width: 100px;
-  height: 20px;
+  height: 35px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  margin-left: 100px;
 }
 
 .displayNone {
