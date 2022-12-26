@@ -4,6 +4,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="Manifest.json" />
   <title>Battleship</title>
 </head>
 <body>
@@ -46,9 +47,13 @@
 
   </div>
 
-  <div id="computerBoard" class="board displayNone">
-    <span id="cbText" class="boardIdentifier">Computer's Board</span>
+  <div id="cbDiv" class="cbDiv displayNone">
+    <div id="computerBoard" class="board">
+      <span id="cbText" class="boardIdentifier">Computer's Board</span>
+    </div>
+    <button id="hintButton" class="hintButton">hint</button>
   </div>
+  
   
     
   <script src="app.js" type="module"></script>

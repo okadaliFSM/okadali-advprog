@@ -5,6 +5,7 @@ var ships = document.querySelectorAll(".ship");
 var playerBoard = Array(10).fill().map(()=>Array(10).fill())
 var computerBoard = Array(10).fill().map(()=>Array(10).fill())
 var playerHitPoint = 17,computerHitPoint = 17
+var playerScore = 0;
 var isGameStarted = false
 var turn = 0; //0 computer 1 player
 
@@ -95,13 +96,16 @@ class computerBox {
                         dot.style.backgroundColor = "white";
                         turn = 0;
                         computerHit();
+                        playerScore = playerScore - 10;
                     }
                     else {
                         dot.style.backgroundColor = "red";
                         successfulHit(1)
+                        playerScore = playerScore + 50;
                     }
                     this.isHitted = true
                     this.div.append(dot)
+                    this.div.style.backgroundColor = "rgb(0, 170, 255)"
                     
                 }
             }
@@ -191,7 +195,7 @@ function successfulHit(ix) {
             pbText.style.color = "red"
             cbText.innerText = "You Won"
             cbText.style.color = "red"
-            alert("You Won The Game!")
+            alert("You Won The Game! Your Total Score is: "+playerScore)
             isGameStarted = false;
         }
     }
@@ -203,7 +207,7 @@ function successfulHit(ix) {
             pbText.style.color = "red"
             cbText.innerText = "You Lost"
             cbText.style.color = "red"   
-            alert("You Lost The Game...")
+            alert("You Lost The Game... Your Total Score is: "+playerScore  )
             isGameStarted = false;
         }
         else {
@@ -281,7 +285,7 @@ function isPlacementFinished() {
         btn.classList.add("displayNone");
         shipCont.classList.add("displayNone");
 
-        let compBoard = document.getElementById("computerBoard");
+        let compBoard = document.getElementById("cbDiv");
         compBoard.classList.remove("displayNone");
         
         isGameStarted = true;
@@ -289,3 +293,26 @@ function isPlacementFinished() {
     } 
 }
 
+//adding hint button
+let hintButton = document.getElementById("hintButton");
+hintButton.onclick = () => {
+    for(let x = 0 ; x < 10 ; x++) {
+        for(let y = 0 ; y < 10 ; y++) {
+            if(!computerBoard[x][y].isHitted && !computerBoard[x][y].isEmpty) {
+                computerBoard[x][y].div.style.backgroundColor = "red";
+                return;
+            }
+        }
+    }
+    
+}
+
+//PWA 
+if ("serviceWorker" in navigator) {
+	window.addEventListener("load", function () {
+		navigator.serviceWorker
+			.register("ServiceWorker.js")
+			.then((res) => console.log("service worker registered", res))
+			.catch((err) => console.log("service worker not registered", err));
+	});
+}
