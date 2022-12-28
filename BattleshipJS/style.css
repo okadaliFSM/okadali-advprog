@@ -92,3 +92,13 @@ body {
   display: flex;
   flex-direction: row;
 }
+
+.info {
+  color: rgb(0, 170, 255);
+}
+.red {
+  color: red;
+}
+.white {
+  color: white;
+}
